@@ -1,3 +1,5 @@
+// Data Transform Object
+
 class IssuedBook {
     _id;
     name;

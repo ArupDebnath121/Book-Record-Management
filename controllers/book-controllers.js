@@ -1,4 +1,5 @@
 const IssuedBook = require("../dtos/book-dto");
+const bookModel = require("../models/book-model");
 const { BookModel, UserModel } = require("../models/book-model");
 
 exports.getAllBooks = async (req, res) => {
@@ -6,9 +7,9 @@ exports.getAllBooks = async (req, res) => {
 
     if (books.length === 0)
         return res.status(404).json({
-        success: false,
-        message: "No book found",
-    });
+            success: false,
+            message: "No book found",
+        });
 
     res.status(200).json({
         success: true,
@@ -78,12 +79,12 @@ exports.addNewBook = async (req, res) => {
 
     if (!data) {
         return res.status(400).json({
-        success: false,
-        message: "No data provided",
-    });
+            success: false,
+            message: "No data provided",
+        });
     }
 
-    await BookModel.create(data);
+    await bookModel.create(data);
 
     const allBooks = await BookModel.find();
 
